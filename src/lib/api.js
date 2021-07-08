@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { getToken } from './auth'
+import { baseUrl } from '../config'
 
 
 function headers() {
@@ -23,7 +24,7 @@ export function createCourse(formData) {
 }
 
 export function deleteCourse(courseId) {
-  return axios.delete(`api/courses/${courseId}`, headers())
+  return axios.delete(`api/courses/${courseId}/`, headers())
 }
 
 export function getSingleCourse(courseId) {
@@ -31,7 +32,7 @@ export function getSingleCourse(courseId) {
 }
 
 export function getSingleLesson(courseId, lessonId) {
-  return axios.get(`/api/courses/${courseId}/lessons/${lessonId}`)
+  return axios.get(`/api/courses/${courseId}/lessons/${lessonId}/`)
 }
 
 export function getUserData(userId) {
@@ -54,10 +55,10 @@ export function addNewComment(id, formData) {
 }
 
 export function deleteComment(id, commentId) {
-  return axios.delete(`/api/courses/${id}/comments/${commentId}`,  headers())
+  return axios.delete(`/api/courses/${id}/comments/${commentId}/`,  headers())
 }
 
 
 export function editComment(id, commentId) {
-  return axios.put(`api/courses/${id}/comments/${commentId}`,  headers())
+  return axios.put(`api/courses/${id}/comments/${commentId}/`,  headers())
 }
