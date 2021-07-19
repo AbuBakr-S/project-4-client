@@ -34,7 +34,6 @@ function Register() {
     }
   }
 
-  console.log(formErrors)
   return (
     <>
       <div className="registration-page-container">

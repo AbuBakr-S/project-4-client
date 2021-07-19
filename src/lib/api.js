@@ -1,5 +1,6 @@
 import axios from 'axios'
 import { getToken } from './auth'
+import { baseUrl } from '../config'
 
 
 function headers() {
@@ -11,53 +12,53 @@ function headers() {
 // * Learn Requests
 
 export function deleteLesson(courseId, lessonId) {
-  return axios.delete(`/api/courses/${courseId}/lessons/${lessonId}/`, headers())
+  return axios.delete(`${baseUrl}/courses/${courseId}/lessons/${lessonId}/`, headers())
 }
 
 export function createLesson(courseId, formData) {
-  return axios.post(`/api/courses/${courseId}/lessons/`, formData, headers())
+  return axios.post(`${baseUrl}/courses/${courseId}/lessons/`, formData, headers())
 }
 
 export function createCourse(formData) {
-  return axios.post('/api/courses/', formData, headers())
+  return axios.post(`${baseUrl}/courses/`, formData, headers())
 }
 
 export function deleteCourse(courseId) {
-  return axios.delete(`api/courses/${courseId}`, headers())
+  return axios.delete(`${baseUrl}/courses/${courseId}/`, headers())
 }
 
 export function getSingleCourse(courseId) {
-  return axios.get(`/api/courses/${courseId}`, headers())
+  return axios.get(`${baseUrl}/courses/${courseId}`, headers())
 }
 
 export function getSingleLesson(courseId, lessonId) {
-  return axios.get(`/api/courses/${courseId}/lessons/${lessonId}`)
+  return axios.get(`${baseUrl}/courses/${courseId}/lessons/${lessonId}/`)
 }
 
 export function getUserData(userId) {
-  return axios.get(`/api/auth/profile/${userId}/`)
+  return axios.get(`${baseUrl}/auth/profile/${userId}/`)
 }
 
 // * Auth Requests
 
 export function registerUser(formData) {
-  return axios.post('api/auth/register/', formData)
+  return axios.post(`${baseUrl}/auth/register/`, formData)
 }
 
 export function loginUser(formData) {
-  return axios.post('api/auth/login/', formData)
+  return axios.post(`${baseUrl}/auth/login/`, formData)
 }
 
 
 export function addNewComment(id, formData) {
-  return axios.post(`/api/courses/${id}/comments/`, formData, headers())
+  return axios.post(`${baseUrl}/courses/${id}/comments/`, formData, headers())
 }
 
 export function deleteComment(id, commentId) {
-  return axios.delete(`/api/courses/${id}/comments/${commentId}`,  headers())
+  return axios.delete(`${baseUrl}/courses/${id}/comments/${commentId}/`,  headers())
 }
 
 
 export function editComment(id, commentId) {
-  return axios.put(`api/courses/${id}/comments/${commentId}`,  headers())
+  return axios.put(`${baseUrl}/courses/${id}/comments/${commentId}/`,  headers())
 }
