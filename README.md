@@ -38,18 +38,18 @@ We started by creating wireframes and an Entity Relationship Diagram (ERD) for t
 ### Planning
 
 *Wireframes*
-[image:57DD0069-D154-4927-939C-1CA436383043-69724-0000054C19EC2212/Screenshot 2021-06-13 at 11.09.53.png]
-[image:C3326F91-1FF3-421C-8C19-4036BB3EC462-69724-0000054C19ED4F68/Screenshot 2021-06-13 at 11.11.24.png]
-[image:D9773446-5A0F-48B6-B1FA-EABC7A2A3639-69724-0000054C19EDF3B0/Screenshot 2021-06-13 at 11.11.29.png]
-[image:6CD440BF-BB03-44CC-B5A3-75B1DEF0A167-69724-0000054C19EE6A3B/Screenshot 2021-06-13 at 11.11.37.png]
+![Wireframe 1](https://github.com/AbuBakr-S/project-4-client/blob/development/src/assets/images/wireframe-1.png)
+![Wireframe2](https://github.com/AbuBakr-S/project-4-client/blob/development/src/assets/images/wireframe-2.png)
+![Wireframe 3](https://github.com/AbuBakr-S/project-4-client/blob/development/src/assets/images/wireframe-3.png)
+![Wireframe 4](https://github.com/AbuBakr-S/project-4-client/blob/development/src/assets/images/wireframe-4.png)
 
 *ERD*
-[image:3CA9EB2F-272E-4902-A1BB-A3758CD7A9B9-69724-000005474C308C8E/erd.png]
+![ERD Diagram](https://github.com/AbuBakr-S/project-4-client/blob/development/src/assets/images/erd.png)
 
 We realised that there was going to be some depth to our app from the nesting of assessments and lessons within courses in the Serializers and Views. These assessments were also multiple choice so we had to figure out how to store this in our database.
 
 *serializers.py*
-[image:84645C1F-96C3-4BEA-9AC9-2E735B26836F-69724-000009CE32EE5AE9/assessment-serialisers.png]
+![Serializer](https://github.com/AbuBakr-S/project-4-client/blob/development/src/assets/images/serializers.png)
 
 ### User Roles
 We also realised that we’d have to figure out how to handle the different user roles we had in mind (Instructor and Learner). I couldn’t figure out how to create this and so I decided to set a role on the User Model upon registration and user conditional flow inside the CRUD requests in the Views to limit requests. 
@@ -58,10 +58,10 @@ We also realised that we’d have to figure out how to handle the different user
 `if request.user.role == “LRN”`
 
 *jwt_auth/models.py*
-[image:7C70C25D-21F4-4E54-A624-8553FC69C003-69724-000005707179759C/user-role.png]
+![User Model](https://github.com/AbuBakr-S/project-4-client/blob/development/src/assets/images/auth-model.png)
 
 *learn/views.py*
-[image:BC50D4E9-D09D-463B-B239-F1395D0AAF18-69724-00000572AB71665B/user-role-conditional.png]
+![Course List View](https://github.com/AbuBakr-S/project-4-client/blob/development/src/assets/images/view.png)
 
 ## Unsolved Problems / Major Hurdles
 * The dashboard is incomplete. I couldn’t figure out how to display the User role on the front end without making a request to the user model from the front end. I need to limit the fields being returned to user role only in the serializer.
