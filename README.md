@@ -45,7 +45,6 @@ This time we started with visualising the product we aimed to build by discussin
 * Assessments will be multiple choice based Questions and Answers
 * Register / Login
 
-
 #### Wireframes & ERD
 <img src="src/assets/images/wireframe-1.png" alt="Home Wireframe" width="60%" height="auto">
 <img src="src/assets/images/wireframe-2.png" alt="Lesson Wireframe" width="60%" height="auto">
@@ -79,7 +78,6 @@ We then worked through the configuration steps of setting up a Django project.
 6. Hook-up URLs
 7. Add the camel case parser to DRF settings 
 
-
 ### Abstract User Model
 I decided to extend the default Django user model and add some custom fields of my own. 
 
@@ -104,7 +102,6 @@ class User(AbstractUser):
     def is_upperclass(self):
         return f'Role: {self.role}'
 ```
-
 
 #### User Roles
 We also realised that we’d have to figure out how to handle the different user roles we had in mind (Instructor and Learner). I couldn’t figure out how to create this and so I decided to set a role on the User Model upon registration and user conditional flow inside the CRUD requests in the Views to limit requests. 
@@ -136,7 +133,6 @@ class CourseDetailView(APIView):
 ### Authentication
 * Add `AUTH_USER_MODEL = 'jwt_auth.User'` to Project settings
 * Create an Abstract User Model
-
 
 ### Serializers - Assessment
 We realised that there was going to be some depth to our app from the nesting of assessments and lessons within courses in the Serializers and Views. These assessments were also multiple choice so we had to figure out how to store this in our database.
@@ -176,14 +172,11 @@ class PopulatedAssessmentSerializer(AssessmentSerializer):
 * We had an issue with creating our seed data.
 * We lost our seed data during deployment
 
-
 ## Unsolved Problems / Major Hurdles
 * The dashboard is incomplete. I couldn’t figure out how to display the User role on the front end without making a request to the user model from the front end. I need to limit the fields being returned to user role only in the serializer.
 
-
 ## Key Learning / Reflection
 On reflection, our product idea for this project was far too ambitious. We had initially lost some time with agreeing on a concept and then got caught up developing the backend which continued to unfold, requiring layers of complexity and nesting. We did however manage to get most of the backend logic working however there is a lot of refactoring and refining to be done. 
-
 
 ### Future Features
 * Giving Instructors ability to post assessments
