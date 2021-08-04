@@ -66,6 +66,10 @@ h1 {
   object-fit: contain;
 }
 
+.add-course {
+  justify-content: center;
+}
+
 .navbar {
   position: sticky;
   top: 0;
@@ -309,9 +313,10 @@ form input {
 .add-course-section {
   display: flex;
   align-items: center;
-  width: 50%;
+  width: 100%;
   justify-content: center;
   text-transform: uppercase;
+  padding: 35px;
 }
 
 .subjects-btn {

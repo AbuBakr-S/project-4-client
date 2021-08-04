@@ -57,7 +57,7 @@ function CourseCard({ id, name, courseImage, subject, description, lessons,feedb
           <Link to ={`/courses/${id}`}><h3>Lessons</h3></Link>}
         <h4>
         {lessons && lessons.slice(0,3).map(lesson => (
-            <li key={lesson._id}>{lesson.title}</li>
+            <li key={lesson.id}>{lesson.title}</li>
         ))}
         </h4>
         {isOwner(owner.id) && (
