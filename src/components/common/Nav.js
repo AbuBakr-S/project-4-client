@@ -62,14 +62,12 @@ function Nav() {
           <li><Link to="/courses" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faList} />Courses</Link></li>
           <li><Link to="/courses/new" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faPlus} />New Course</Link></li>
           {!isLoggedIn ?
-            <>
               <li><Link to="/register" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faUserPlus} />Register</Link></li>
-            </>
             :
-            <>
-              <li><Link to="/dashboard" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faUserCircle} />Dashboard</Link></li>
-              <li className="navbar-item logout-link" onClick={handleLogout}><FontAwesomeIcon className="fa-items-icon" icon={faSignOutAlt} />Log out</li>
-            </>
+              <>
+                <li><Link to="/dashboard" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faUserCircle} />Dashboard</Link></li>
+                <li className="navbar-item logout-link" onClick={handleLogout}><FontAwesomeIcon className="fa-items-icon" icon={faSignOutAlt} />Log out</li>
+              </>
           }
         </ul>
 
