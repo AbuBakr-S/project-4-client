@@ -6,8 +6,6 @@ In this project I worked in a pair with Rizwan where we built another full stack
 ### Deployed Project
 You can find this deployed [here](https://learn-as.netlify.app/).
 
-My backend api is [here](https://learn-as.herokuapp.com/api).
-
 ### Web Technologies / Frameworks
 * Django REST Framework
 * Python

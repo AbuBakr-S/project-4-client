@@ -11,6 +11,10 @@ function headers() {
 
 // * Learn Requests
 
+export function getAllCourses() {
+  return axios.get(`${baseUrl}/courses/`, headers())
+}
+
 export function deleteLesson(courseId, lessonId) {
   return axios.delete(`${baseUrl}/courses/${courseId}/lessons/${lessonId}/`, headers())
 }
