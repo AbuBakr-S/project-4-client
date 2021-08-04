@@ -1,10 +1,12 @@
 import { createCourse } from '../../../lib/api'
 import { useForm } from '../../../hooks/useForm'
+import { useHistory } from 'react-router-dom'
+
 
 import ImageUpload from '../ImageUpload'
 
 function CourseNew() {
-
+  const history = useHistory()
   const { formData, handleChange, formErrors, setFormErrors } = useForm({
     title: '',
     description: '',
@@ -21,6 +23,7 @@ function CourseNew() {
 
     try {
       await createCourse(formData)
+      history.push('/courses')
     } catch (err) {
       console.log(err)
       setFormErrors(err.response.data)

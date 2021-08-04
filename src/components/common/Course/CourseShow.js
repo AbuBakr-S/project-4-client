@@ -40,7 +40,7 @@ function CourseShow() {
 
     try {
       await createLesson(courseId, formData)
-      history.push('/')
+      history.push('/courses')
     } catch (err) {
       console.log(err)
     }
