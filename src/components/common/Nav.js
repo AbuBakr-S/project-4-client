@@ -11,7 +11,11 @@ function Nav() {
   const isLoggedIn = isAuthenticated()
   const [showColor, setShowColor] = React.useState(false)
   const [sidebarShow, setSidebarShow] = React.useState(false)
-  const handleSideBar = () => setSidebarShow(!sidebarShow)
+  
+  const handleSideBar = () => {
+    console.log("Clicked")
+    setSidebarShow(!sidebarShow)  
+  }
   const menuref = useRef()
 
 
@@ -58,16 +62,17 @@ function Nav() {
         </div>
       </div>
       <div ref={menuref} className={sidebarShow ? 'side-nav-menu-container active' : 'side-nav-menu-container'}>
-        <ul className="navbar-content-container" onClick={handleSideBar}>          <li><Link to="/" className="navbar-item" ><FontAwesomeIcon className="fa-items-icon" icon={faHome} />Home</Link></li>
+        <ul className="navbar-content-container" onClick={handleSideBar}>          
+          <li><Link to="/" className="navbar-item" ><FontAwesomeIcon className="fa-items-icon" icon={faHome} />Home</Link></li>
           <li><Link to="/courses" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faList} />Courses</Link></li>
           <li><Link to="/courses/new" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faPlus} />New Course</Link></li>
           {!isLoggedIn ?
-              <li><Link to="/register" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faUserPlus} />Register</Link></li>
-            :
-              <>
-                <li><Link to="/dashboard" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faUserCircle} />Dashboard</Link></li>
-                <li className="navbar-item logout-link" onClick={handleLogout}><FontAwesomeIcon className="fa-items-icon" icon={faSignOutAlt} />Log out</li>
-              </>
+            <li><Link to="/register" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faUserPlus} />Register</Link></li>
+              :
+            <>
+              <li><Link to="/dashboard" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faUserCircle} />Dashboard</Link></li>
+              <li className="navbar-item logout-link" onClick={handleLogout}><FontAwesomeIcon className="fa-items-icon" icon={faSignOutAlt} />Log out</li>
+            </>
           }
         </ul>
 
