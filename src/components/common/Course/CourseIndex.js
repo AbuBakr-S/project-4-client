@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 //import { createCourse } from '../../../lib/api'
 import Spinner from '../Spinner'
 import Error from '../Error'
+import { getAllCourses } from '../../../lib/api'
 
 
 function CourseIndex() {
@@ -23,9 +24,11 @@ function CourseIndex() {
   React.useEffect(() => {
     const getData = async (e) => {
       try {
-        const { data } = await axios.get(`/api/courses/`)
+        console.log("Reached useEffect")
+        const { data }  = await getAllCourses()
         setCourses(data)
       } catch (err) {
+        console.log(err)
         setIsError(true)
       }
     }
@@ -33,7 +36,7 @@ function CourseIndex() {
   }, [])
 
 
-  console.log(courses)
+  console.log('courses:', courses)
 
   return (
     <>
