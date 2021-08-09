@@ -13,17 +13,14 @@ function Nav() {
   const [sidebarShow, setSidebarShow] = React.useState(false)
   
   const handleSideBar = () => {
-    console.log("Clicked")
-    setSidebarShow(!sidebarShow)  
+    setSidebarShow(!sidebarShow)
   }
   const menuref = useRef()
-
 
   const handleLogout = () => {
     removeToken()
     history.push('/')
   }
-
 
   React.useEffect(() => {
     const scrollListener = () => {
@@ -35,21 +32,23 @@ function Nav() {
     }
   }, [])
 
-  React.useEffect(() => {
-    // add when mounted
-    let handler = (event) => {
-      if (!menuref.current.contains(event.target)) {
-        setSidebarShow(false)
-      }
-    }
+  // React.useEffect(() => {
+  //   // add when mounted
+  //   let handler = (event) => {
+  //     if (!menuref.current.contains(event.target)) {
+  //       setSidebarShow(false)
+  //     }
+  //   }
 
-    document.addEventListener('mousedown', handler)
+  //   document.addEventListener('mousedown', handler)
 
-    return () => {
-      document.removeEventListener("mousedown", handler)
-    }
-  });
+  //   return () => {
+  //     document.removeEventListener("mousedown", handler)
+  //   }
+  // });
 
+  console.log("Clicked")
+  console.log(sidebarShow)  
 
   return (
     <>
@@ -62,7 +61,7 @@ function Nav() {
         </div>
       </div>
       <div ref={menuref} className={sidebarShow ? 'side-nav-menu-container active' : 'side-nav-menu-container'}>
-        <ul className="navbar-content-container" onClick={handleSideBar}>          
+        <ul className="navbar-content-container">          
           <li><Link to="/" className="navbar-item" ><FontAwesomeIcon className="fa-items-icon" icon={faHome} />Home</Link></li>
           <li><Link to="/courses" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faList} />Courses</Link></li>
           <li><Link to="/courses/new" className="navbar-item"><FontAwesomeIcon className="fa-items-icon" icon={faPlus} />New Course</Link></li>
