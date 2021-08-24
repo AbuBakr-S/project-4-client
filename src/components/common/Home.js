@@ -4,7 +4,6 @@ import { useForm } from '../../hooks/useForm'
 import { loginUser } from '../../lib/api'
 import { setToken } from '../../lib/auth'
 
-
 function Home() {
   const history = useHistory()
   const [formErrors , setFormErrors] = React.useState(false)
@@ -17,7 +16,7 @@ function Home() {
 
   const handleSubmit = async (e) => {
     e.preventDefault()
-
+    
     try {
       const res = await loginUser(formData)
       setToken(res.data.token)
@@ -26,9 +25,7 @@ function Home() {
       console.log(err.request)
       setFormErrors(true)
     }
-
   }
-
 
   return (
     <>
@@ -45,30 +42,23 @@ function Home() {
           <div className="login-form animate__animated animate__fadeInRight">
             <form className="home-page-login" onSubmit={handleSubmit}>
               <fieldset>
-                <h2>Login</h2>
-                
+                <h2>Login</h2> 
                 <label htmlFor="email">Email:</label><br />
                 <input type="email" id="email" name="email" placeholder="email@domain.com" onChange={handleChange} /><br />
                 <label htmlFor="password">Password:</label><br />
                 <input type="password" id="password" name="password" placeholder="password" onChange={handleChange} /><br /><br />
-               
                 {formErrors && (
                   <p className="form-login-errors">Please check Email or Password!</p>
                 )}
-
                 <input className="form-submit-btn" type="submit" value="Login" />
-              
-
               </fieldset>
             </form>
           </div>
-
         </div>
       </div>
       <div className="main-section-home">
         <h1>Why E-learn</h1>
         <div className="why_us">
-
           <div className="first-column">
             <h4>Great Instructors</h4>
             <p>Students practice at their own pace, first filling in gaps in their understanding and then accelerating their learning.</p>
@@ -84,12 +74,8 @@ function Home() {
             Math, science and many more. Free for learners
             </p>
           </div>
-
         </div>
-
       </div>
-
-
     </>
   )
 }

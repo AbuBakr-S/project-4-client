@@ -1,41 +1,20 @@
 import React, { useState } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import parse from 'html-react-parser';
-import Error from '../Error';
-import Spinner from '../Spinner';
-import { addNewComment, getSingleLesson, deleteComment, deleteLesson } from '../../../lib/api'
-import CodeMirrorReact from 'react-codemirror'
-import { ReactCodeJar, useCodeJar } from "react-codejar";
-
+// import Error from '../Error';
+// import Spinner from '../Spinner';
+import { getSingleLesson, deleteLesson } from '../../../lib/api'  // addNewComment, deleteComment
 
 function LessonShow() {
   
-  const [isError, setIsError] = React.useState(false)
+  // const [isError, setIsError] = React.useState(false)
   const { courseId, lessonId } = useParams()
   const [lesson, setLesson] = React.useState(null)
   const [currentQuestion, setCurrentQuestion] = useState(0)
   const [scoreShow, setShow] = useState(false)
   const [learnerScore, setLearnerScore] = useState(0)
-  const isLoading = !lesson && !isError
+  // const isLoading = !lesson && !isError
   const videoLinkUrl = lesson && lesson.videoLink
-  const highlight = editor => {
-    let code = editor.textContent;
-    code = code.replace(/\((\w+?)(\b)/g, '(<font color="#8a2be2">$1</font>$2');
-    editor.innerHTML = code;
-  };
-  
-const HookExample = () => {
-  const [code, setCode] = useState('(format t "lisp example")');
-
-  const editorRef = useCodeJar({
-    code, // Initial code value
-    onUpdate: setCode, // Update the text
-    highlight, // Highlight function, receive the editor
-    lineNumbers: true // Show line numbers
-  });
-
-  return <div ref={editorRef}></div>;
-};
   
   //Function to embed youtube watch video to embed plus adding Iframe
   function youtubeEmbed(youtubeUrlLink) {
@@ -46,20 +25,13 @@ const HookExample = () => {
     }
   }
 
-
   const videoIdYoutube = youtubeEmbed(String(videoLinkUrl));
-  const fullMarkup = parse(`<iframe width="660" height="415" src="https://www.youtube.com/embed/${videoIdYoutube}" <iframe width="560" height="315" src="https://www.youtube.com/embed/w7ejDZ8SWv8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`)
-
+  const fullMarkup = parse(`<iframe width="660" height="415" src="https://www.youtube.com/embed/${videoIdYoutube}"> <iframe width="560" height="315" src="https://www.youtube.com/embed/w7ejDZ8SWv8" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>`)
   const history = useHistory()
-
-  // //make sure video not null
-  
   //handle form for comment data
-  const [commentFormData, setCommentFormData] = React.useState({
-    content: '',
-  })
-
-  
+  // const [commentFormData, setCommentFormData] = React.useState({
+  //   content: '',
+  // })
 
   const handleDeleteLesson = async () => {
     console.log(courseId, lessonId)
@@ -67,29 +39,28 @@ const HookExample = () => {
     history.push('/courses')
   }
 
-  const handleDelete = async (commentId) => {
-    await deleteComment(lessonId, commentId)
-  }
+   // ### COMMENT FEATURE ###
+  // const handleDelete = async (commentId) => {
+  //   await deleteComment(lessonId, commentId)
+  // }
 
+  // const handleAddUserComment = async e => {
+  //   e.preventDefault()
+  //   history.go(0)
 
-  const handleAddUserComment = async e => {
-    e.preventDefault()
-    history.go(0)
-
-    try {
-      const { data } = await addNewComment(lessonId, commentFormData)
-
-      console.log(`data is: ${lessonId}`)
-      setCommentFormData({ content: '' })
-    } catch (err) {
-      setIsError(true)
-    }
-  }
-
-  const handleChange = event => {
-    const nextFormData = { ...commentFormData, [event.target.name]: event.target.value }
-    setCommentFormData(nextFormData)
-  }
+  //   try {
+  //     const { data } = await addNewComment(lessonId, commentFormData)
+  //     console.log(`data is: ${lessonId}`)
+  //     setCommentFormData({ content: '' })
+  //   } catch (err) {
+  //     setIsError(true)
+  //   }
+  // }
+  //
+  // const handleChange = event => {
+  //   const nextFormData = { ...commentFormData, [event.target.name]: event.target.value }
+  //   setCommentFormData(nextFormData)
+  // }
 
   const handleAnswerClick = (isCorrect) => {
     if (isCorrect) {
@@ -121,8 +92,8 @@ const HookExample = () => {
   return (
     <>
       <div className="main-lesson-container">
-        {isError && <Error />}
-        {isLoading && <Spinner />}
+        {/* {isError && <Error />} */}
+        {/* {isLoading && <Spinner />} */}
         {lesson && <div>
           <div className="lesson-banner">
             <div>
@@ -142,11 +113,8 @@ const HookExample = () => {
               <div className="youtube-vid">
                 {fullMarkup}
               </div>
-              <div className="IDE-section">
+              <div className="lesson-content">
                 {lesson?.content}
-
-                {/* <iframe src="https://trinket.io/embed/python/f239d4fb1a" width="100%" height="356" frameBorder="0" marginWidth="0" marginHeight="0" allowFullScreen></iframe> */}
-
               </div>
             </div>
 
@@ -172,32 +140,20 @@ const HookExample = () => {
                         <div>
                           {lesson.assessment.questions[currentQuestion].question}
                         </div>
-
                         <div>
                           {lesson.assessment.questions[currentQuestion].answers.map(answer => <button onClick={() => handleAnswerClick(answer.isCorrect)} key={answer.id}>{answer.answer}</button>)}
-
                         </div>
                       </div>
-
                     )}
                   </>
                 ) : (
                   <div>
                     <p className="no-quiz-section">Quizzes will be posted shortly to test your knowledge for this lesson</p>
-
                   </div>
                 )
             }
-
-
-            <div className="Lesson-summary-styling">
-              <h2>Lesson Summary</h2>
-              <hr /><br />
-            </div>
-
-            <section className="comments-section">
+            {/* <section className="comments-section">
               <div>
-
                 <h1>Comments</h1>
                 <p className="discussion-text">Add any questions about the lesson / discussion here...</p>
                 <form onSubmit={handleAddUserComment}>
@@ -214,31 +170,22 @@ const HookExample = () => {
                   <div className="btn-send-section">
                     <button className="send-comment">SEND</button>
                   </div>
-
                 </form>
-
                 {lesson?.comments.slice(0).reverse().map(comment => {
                   return (
                     <div key={comment.id}>
                       <p>BY ---
-            {comment.user
-                          ? comment.user :
-                          'User'
-                        }
+                      {comment.user ? comment.user : 'User'}
                       </p>
                       <p>{comment.content}</p>
                       <button onClick={() => handleDelete(comment.id)}>DELETE</button>
-                     
-
                     </div>
                   )
                 })}
               </div>
-            </section>
-
+            </section> */}
           </div>
         </div>
-
         }
       </div>
 
@@ -249,8 +196,5 @@ const HookExample = () => {
     </>
   )
 }
-
-
-
 
 export default LessonShow

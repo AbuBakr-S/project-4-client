@@ -1,8 +1,7 @@
 import React from 'react'
-import axios from 'axios'
 import CourseCard from './CourseCard'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusCircle, faSearch } from '@fortawesome/free-solid-svg-icons'
+import { faPlusCircle } from '@fortawesome/free-solid-svg-icons'
 import { isAuthenticated } from '../../../lib/auth'
 import { Link } from 'react-router-dom'
 //import { createCourse } from '../../../lib/api'
@@ -24,7 +23,6 @@ function CourseIndex() {
   React.useEffect(() => {
     const getData = async (e) => {
       try {
-        console.log("Reached useEffect")
         const { data }  = await getAllCourses()
         setCourses(data)
       } catch (err) {
@@ -34,9 +32,6 @@ function CourseIndex() {
     }
     setTimeout(getData, 1300)
   }, [])
-
-
-  console.log('courses:', courses)
 
   return (
     <>
