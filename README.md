@@ -14,8 +14,7 @@ You can find this deployed [here](https://learn-as.netlify.app/).
 * React.js
 * JavaScript
 
-### Tools
-* Zoom
+### Tools* Zoom
 * Github
 * Visual Studio Live Share
 * Excalidraw - White boarding 

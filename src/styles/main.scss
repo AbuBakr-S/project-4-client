@@ -379,6 +379,31 @@ form input {
 }
 
 
+// Lesson Container Styles
+
+.lesson-card-container {
+  border: solid 14px #3366CC;
+  width: 50%;
+  margin: 0 auto;
+  text-align: center;
+  padding-bottom: 25px;
+}
+
+.new-lesson-container {
+  text-align: center;
+  margin-top: 50px;
+}
+
+.add-lesson {
+  margin: 50px auto;
+}
+
+.lesson-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 //Individual lesson details page styles
 .lesson-banner {
   background-color: #3366CC;
@@ -526,6 +551,17 @@ small {
   font-weight: bold;
   margin-top: 3px;
 }
+
+/* ##################### lesson show STYLING ##################### */
+
+
+.lesson-content {
+  white-space: pre-line;
+  line-height: 1.7;
+  padding: 4em 0;
+}
+
+/* ##################### end of lesson show STYLING ##################### */
 
 
 /* ##################### Registration STYLING ##################### */
