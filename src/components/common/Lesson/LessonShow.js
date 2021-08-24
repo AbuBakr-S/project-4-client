@@ -190,9 +190,9 @@ function LessonShow() {
       </div>
 
 
-      <button onClick={handleDeleteLesson}>
+      <button className="lesson" onClick={handleDeleteLesson}>
         Delete This Lesson
-    </button>
+      </button>
     </>
   )
 }
